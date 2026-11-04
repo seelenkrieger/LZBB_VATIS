@@ -2326,8 +2326,8 @@
         },
         {
           "variableName": "CDM",
-          "text": "LVP IN OPS",
-          "voice": "LOW VISIBILITY PROCEDURES IN OPERATION, USE CATEGORY II/ III HOLDING POINTS, PAPI NOT AVAILABLE"
+          "text": "CDM ACTIVE, CONFIRM TOBT AT VATS.IM/VDGS AND MONITOR YOUR STATUS",
+          "voice": "COLLABORATIVE DECISION MAKING IN PROGRESS, CONFIRM TARGET OFF BLOCK TIME AT V A TS. DOT. I M. SLASH VDGS  AND MONITOR YOUR STATUS"
         }
       ],
       "patterns": [
@@ -6991,6 +6991,11 @@
           "variableName": "STARTING",
           "text": "LZKZ INF [ATIS_CODE]",
           "voice": "THIS IS POPRAD-TATRY DEPARTURE INFORMATION [ATIS_CODE]"
+        },
+        {
+          "variableName": "CDM",
+          "text": "CDM ACTIVE, CONFIRM TOBT AT VATS.IM/VDGS AND MONITOR YOUR STATUS",
+          "voice": "COLLABORATIVE DECISION MAKING IN PROGRESS, CONFIRM TARGET OFF BLOCK TIME AT V A TS. DOT. I M. SLASH VDGS  AND MONITOR YOUR STATUS"
         }
       ],
       "patterns": [
@@ -9311,6 +9316,11 @@
           "variableName": "STARTING",
           "text": "LZKZ INF [ATIS_CODE]",
           "voice": "THIS IS KOSITSCHE DEPARTURE INFORMATION [ATIS_CODE]"
+        },
+        {
+          "variableName": "CDM",
+          "text": "CDM ACTIVE, CONFIRM TOBT AT VATS.IM/VDGS AND MONITOR YOUR STATUS",
+          "voice": "COLLABORATIVE DECISION MAKING IN PROGRESS, CONFIRM TARGET OFF BLOCK TIME AT V A TS. DOT. I M. SLASH VDGS  AND MONITOR YOUR STATUS"
         }
       ],
       "patterns": [
