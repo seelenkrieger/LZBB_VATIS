@@ -8,7 +8,7 @@
       "id": "cf614c12-d55f-4818-9c51-eda7064ccc4b",
       "ordinal": 0,
       "identifier": "LZIB",
-      "name": "Štefánik",
+      "name": "Stefanik",
       "atisType": "Departure",
       "codeRange": {
         "low": "A",
@@ -2383,7 +2383,7 @@
       "id": "2176da2e-ad3a-4452-b125-42b8ece70fa3",
       "ordinal": 0,
       "identifier": "LZIB",
-      "name": "Štefánik",
+      "name": "Stefanik",
       "atisType": "Arrival",
       "codeRange": {
         "low": "A",
@@ -7032,7 +7032,7 @@
       "id": "22f428cc-dd8e-4f07-b5fb-d1e79c4bc0ab",
       "ordinal": 0,
       "identifier": "LZKZ",
-      "name": "Košice",
+      "name": "Kosice",
       "atisType": "Combined",
       "codeRange": {
         "low": "A",
