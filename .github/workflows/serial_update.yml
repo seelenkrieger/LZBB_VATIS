@@ -60,14 +60,23 @@ jobs:
 
       - name: Commit and Push changes
         run: |
-          git config --local user.email "github-actions[bot]@://github.com"
+          # 1. Git-Konfiguration mit der offiziellen Bot-E-Mail setzen
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add LZBB.json # Auch hier den Dateinamen anpassen, falls nötig
           
-          # Nur committen, wenn sich die Datei tatsächlich geändert hat
+          # 2. Datei hinzufügen
+          git add LZBB.json
+          
+          # 3. Nur committen und pushen, wenn Änderungen vorliegen
           if git diff --staged --quiet; then
             echo "Keine Änderungen an der Serial nötig."
           else
             git commit -m "chore: automatisch updateSerial aktualisiert"
-            git push
+            
+            # Konfiguriere Git so, dass es bei einem Serverfehler bis zu 3-mal versucht zu pushen
+            git config --global http.lowSpeedLimit 0
+            git config --global http.lowSpeedTime 999
+            
+            echo "Pushe Änderungen zu GitHub..."
+            git push || (sleep 5 && git push) || (sleep 10 && git push)
           fi
