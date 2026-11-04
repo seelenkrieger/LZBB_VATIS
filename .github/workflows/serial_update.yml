@@ -1,0 +1,73 @@
+name: Update JSON Serial Number
+
+on:
+  push:
+    branches:
+      - main # Ersetze dies mit deinem Default-Branch (z.B. master), falls nötig
+
+jobs:
+  update-serial:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Calculate and Update Serial
+        run: |
+          python -c '
+          import json
+          import datetime
+          import os
+
+          file_path = "LZBB.json" # Passe den Pfad zu deiner JSON-Datei hier an
+
+          # 1. Aktuelles Datum holen (Format: YYYYMMDD)
+          today_str = datetime.datetime.now().strftime("%Y%m%d")
+
+          # 2. JSON-Datei einlesen
+          with open(file_path, "r", encoding="utf-8") as f:
+              data = json.load(f)
+
+          # 3. Bestehende Serial auslesen
+          current_serial = str(data.get("updateSerial", ""))
+
+          # 4. Neue Serial Logik berechnen
+          if current_serial.startswith(today_str) and len(current_serial) == 10:
+              # Gleicher Tag -> Version um 1 erhöhen
+              current_version = int(current_serial[-2:])
+              new_version = f"{current_version + 1:02d}"
+              new_serial = int(today_str + new_version)
+          else:
+              # Neuer Tag oder ungültiges altes Format -> Starte mit Version 01
+              new_serial = int(today_str + "01")
+
+          # 5. Wert im JSON ersetzen und speichern
+          data["updateSerial"] = new_serial
+          with open(file_path, "w", encoding="utf-8") as f:
+              json.dump(data, f, indent=2, ensure_ascii=False)
+              f.write("\n") # Verhindert, dass eine Newline am Dateiende fehlt
+
+          print(f"Serial updated from {current_serial} to {new_serial}")
+          '
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@://github.com"
+          git config --local user.name "github-actions[bot]"
+          git add LZBB.json # Auch hier den Dateinamen anpassen, falls nötig
+          
+          # Nur committen, wenn sich die Datei tatsächlich geändert hat
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen an der Serial nötig."
+          else
+            git commit -m "chore: automatisch updateSerial aktualisiert"
+            git push
+          fi
