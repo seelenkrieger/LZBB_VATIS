@@ -1,8 +1,8 @@
 {
   "name": "Slovakia",
   "id": "939b12e1-1ec7-404a-97d8-c511f216a901",
-  "updateUrl": "https://raw.githubusercontent.com/Lithuania-vACC/EYVL-vATIS/refs/heads/main/EYVL.json",
-  "updateSerial": 2026102301,
+  "updateUrl": "https://raw.githubusercontent.com/vacc-slovakia/VATIS/refs/heads/main/LZBB.json",
+  "updateSerial": 2026110401,
   "stations": [
     {
       "id": "cf614c12-d55f-4818-9c51-eda7064ccc4b",
